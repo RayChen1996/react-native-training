@@ -6,6 +6,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Button
 } from 'react-native';
 import Header from '../components/Header'
 import Main from '../components/Main'
@@ -14,7 +15,9 @@ import CustomListview from '../components/RdrListview'
 import CustomRow from '../components/cell/reader_cell'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Icon from 'react-native-vector-icons/FontAwesome';
+// import Icon from 'react-native-vector-icons/FontAwesome';
+ 
+ 
  
 const Stack = createNativeStackNavigator();
 const Home = () => {
@@ -121,7 +124,12 @@ const Home = () => {
                         <Text>+</Text>
                     </TouchableOpacity>
                 </View> 
-      
+                 <Button
+       title="Go to Jane's profile"
+         onPress={() =>
+          navigation.navigate('Profile', {name: 'Jane'})
+        }
+      />
             </View>
 
           </View>

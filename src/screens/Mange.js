@@ -46,11 +46,7 @@ const Manger = () => {
       flexDirection: "column"
     }]}>
       <View style={{ flex: 1  }} >
-      <Header
-            title={getTitle()}
-            style={{flex: .5,}}
-            >
-            </Header>   
+
 
       </View>
      

@@ -34,8 +34,14 @@ import {
 import MainHeader from './src/components/Header';
 import BottomNavBae  from './src/components/Footer';
 import SelectDropdown from 'react-native-select-dropdown'
-import { NavigationContainer } from '@react-navigation/native';
 
+import Home from './src/screens/Home'
+import Mange from './src/screens/Mange'
+
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 // import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // const Tab = createBottomTabNavigator();
 function App() {
@@ -58,26 +64,23 @@ function App() {
       alert(error.message);
     }
   };
-  function HomeScreen() {
+  const HomeScreen = ({navigation}) => {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Home!</Text>
-      </View>
+      <Home></Home>
+      // <Button
+      //   title="Go to Jane's profile"
+      //   onPress={() =>
+      //     navigation.navigate('Profile', {name: 'Jane'})
+      //   }
+      // />
     );
-  }
-  
-  function SettingsScreen() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Settings!</Text>
-      </View>
-    );
-  }
+  };
+  const ProfileScreen = ({navigation, route}) => {
+    return <Mange />;
+  };
 
-  const OpenDoor = () => {
-    console.log("445654645")
-    plusSlides(1);
-  }
+
+  
 
   
 
@@ -90,7 +93,21 @@ function App() {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <NavigationContainer>
+
+    
+    
+    <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{title: '卡機首頁'}}
+        />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+      </Stack.Navigator>
+
+
+      {/* <SafeAreaView style={backgroundStyle}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
@@ -98,7 +115,7 @@ function App() {
 
 
 
-      <MainHeader></MainHeader>
+      <MainHeader></MainHeader> */}
 
 
       {/* <NavigationContainer>
@@ -109,7 +126,7 @@ function App() {
     </NavigationContainer> */}
 
 
-      <TextInput
+      {/* <TextInput
       placeholder='IP'
       ></TextInput>
 
@@ -121,10 +138,10 @@ function App() {
 
        <TextInput
       placeholder='機號'
-      ></TextInput>
+      ></TextInput> */}
 
 
-      <SelectDropdown
+      {/* <SelectDropdown
         data={countries}
         onSelect={(selectedItem, index) => {
           console.log(selectedItem, index)
@@ -156,9 +173,10 @@ function App() {
             
           </TouchableOpacity>
 
-      </ScrollView>
-      <BottomNavBae></BottomNavBae>
-    </SafeAreaView>
+      </ScrollView> */}
+      {/* <BottomNavBae></BottomNavBae> */}
+    {/* </SafeAreaView> */}
+    </NavigationContainer>
   );
 };
 
